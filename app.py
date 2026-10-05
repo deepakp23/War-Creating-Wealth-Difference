@@ -49,6 +49,7 @@ def dual_axis_chart(frame: pd.DataFrame) -> go.Figure:
             name=WEALTH_COLUMN,
             mode="lines",
             line={"color": "red"},
+            hovertemplate=f"{WEALTH_COLUMN}: %{{y:.0f}}%<extra></extra>",
         ),
         secondary_y=False,
     )
@@ -59,6 +60,7 @@ def dual_axis_chart(frame: pd.DataFrame) -> go.Figure:
             name=RETURN_COLUMN,
             mode="lines",
             line={"color": "blue"},
+            hovertemplate=f"{RETURN_COLUMN}: $%{{y:.0f}}<extra></extra>",
         ),
         secondary_y=True,
     )
@@ -66,7 +68,7 @@ def dual_axis_chart(frame: pd.DataFrame) -> go.Figure:
     figure.update_yaxes(title_text=WEALTH_COLUMN, secondary_y=False, color="red")
     figure.update_yaxes(title_text=RETURN_COLUMN, secondary_y=True, color="blue")
     figure.update_layout(
-        title="Top 1% Wealth Share and LMT Annual Return",
+        title="Top 1% wealth Share and Lockhead Martin Annual Return",
         hovermode="x unified",
         legend={"orientation": "h", "yanchor": "bottom", "y": 1.02},
         margin={"t": 80},
@@ -77,7 +79,6 @@ def dual_axis_chart(frame: pd.DataFrame) -> go.Figure:
 def main() -> None:
     st.set_page_config(page_title="War and Wealth Inequality", layout="wide")
     st.title("War and Wealth Inequality")
-    st.caption("The chart uses generated sample rows until a merged dataframe is connected.")
 
     frame = load_frame()
     year_min = int(frame["Year"].min())
