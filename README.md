@@ -7,6 +7,7 @@ Developing A Dashboard that shows the differences created during war and economi
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
 .venv/bin/python main.py
+.venv/bin/streamlit run app.py
 ```
 
-`main.py` prints an empty country-year DataFrame. Fill that frame from your own sources.
+`main.py` prints an empty country-year DataFrame. Fill that frame from your own sources. `app.py` opens the War and Wealth Inequality dashboard.
